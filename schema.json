@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "archive_version": "1.0",
+  "project": "yagang-tidewatch",
+  "repo": "https://github.com/vivihine/yagang-tidewatch",
+  "purpose": "鸦岗断面潮位/水位/气象/径流数据采集与归档；供与鸦岗断面水质（DO）做关联分析",
+  "timezone": "Asia/Shanghai",
+  "units": {
+    "cm": "厘米",
+    "m": "米",
+    "m3s": "立方米/秒",
+    "celsius": "摄氏度",
+    "hpa": "百帕",
+    "kmh": "千米/小时",
+    "watt_m2": "瓦/平方米",
+    "mm": "毫米"
+  },
+  "datasets": {
+    "gz_tide": {
+      "files": ["data/gz_tide/YYYY-MM.csv"],
+      "nature": "forecast",
+      "source": "广东省海洋预报台/国家海洋局南海预报中心（g.hyyb.org）数值预报格点",
+      "update": "每天 14:00（北京时间）起报，滚动 72 小时逐时",
+      "history": "无历史归档，只能从部署日起积累",
+      "station_note": "GZ 点是数值模式格点，不是实体水文站；广州38/39 距鸦岗约 14 km（下游最近）",
+      "time_field": "valid_time",
+      "key_fields": ["station_code", "valid_time", "run_time"],
+      "columns": {
+        "station_code": {"type": "string", "description": "GZ 站点编号（GZ079 广州38、GZ080 广州39、GZ083 广州41、GZ082 南石头、GZ074 中大码头）"},
+        "station_name": {"type": "string", "description": "站点名称"},
+        "run_time": {"type": "string", "description": "预报版本（抓取时间），同一 valid_time 可能有多个版本"},
+        "lead_h": {"type": "integer", "description": "相对本次 72h 预报起点的第几小时（0–71）；越小越接近实况"},
+        "valid_time": {"type": "datetime", "description": "预报有效时刻（北京时间）"},
+        "astro_cm": {"type": "number", "unit": "cm", "description": "天文潮"},
+        "total_cm": {"type": "number", "unit": "cm", "description": "总水位 = astro_cm + surge_cm"},
+        "surge_cm": {"type": "number", "unit": "cm", "description": "增水（非天文分量，气象增水为主；感潮河段也含径流顶托等）"},
+        "dist_to_warning_cm": {"type": "number", "unit": "cm", "description": "距警戒潮位距离（负值=低于警戒）"},
+        "dist_to_dike_cm": {"type": "string", "description": "距堤顶距离（可能为“无”）"},
+        "fetched_at": {"type": "datetime", "description": "抓取时间"},
+        "url": {"type": "string", "description": "来源 URL"}
+      }
+    },
+    "gz_highlow": {
+      "files": ["data/gz_highlow/YYYY-MM.csv"],
+      "nature": "forecast",
+      "source": "同上（风暴潮/南海潮汐预报系统）",
+      "update": "每天更新，未来约 16 天高低潮",
+      "datum": "珠基（cm）",
+      "time_field": "date",
+      "key_fields": ["station_name", "date", "run_time"],
+      "columns": {
+        "station_name": {"type": "string", "description": "广州 / 黄埔 / 南沙"},
+        "run_time": {"type": "string", "description": "预报版本"},
+        "date": {"type": "date", "description": "日期"},
+        "high1_time": {"type": "string", "description": "高潮1 时刻 HH:MM"},
+        "high1_cm": {"type": "number", "unit": "cm", "description": "高潮1 潮位"},
+        "high2_time": {"type": "string", "description": "高潮2 时刻"},
+        "high2_cm": {"type": "number", "unit": "cm", "description": "高潮2 潮位"},
+        "low1_time": {"type": "string", "description": "低潮1 时刻"},
+        "low1_cm": {"type": "number", "unit": "cm", "description": "低潮1 潮位"},
+        "low2_time": {"type": "string", "description": "低潮2 时刻"},
+        "low2_cm": {"type": "number", "unit": "cm", "description": "低潮2 潮位"}
+      }
+    },
+    "t148": {
+      "files": ["data/t148/hourly/YYYY-MM.csv", "data/t148/highlow/YYYY-MM.csv", "data/t148/station.csv"],
+      "nature": "forecast_astronomical",
+      "source": "国家海洋信息中心 publictide 潮汐表 T148「广州」",
+      "update": "每天抓取；接口支持按日期回溯（约 2025-01-01～2027-12-31）",
+      "datum": "潮高基准面：平均海面下 134 cm",
+      "station": {"title": "广州", "coordinate": "23°04′N 113°16′E"},
+      "time_field": "date + hour",
+      "key_fields_hourly": ["port_code", "date", "hour"],
+      "key_fields_highlow": ["port_code", "date", "seq"],
+      "columns_hourly": {
+        "date": {"type": "date", "description": "日期"},
+        "hour": {"type": "string", "description": "小时 00–23"},
+        "height_cm": {"type": "number", "unit": "cm", "description": "天文潮潮高"}
+      },
+      "columns_highlow": {
+        "date": {"type": "date"},
+        "seq": {"type": "integer", "description": "当日第几个极值"},
+        "time": {"type": "string", "description": "潮时 HH:MM"},
+        "height_cm": {"type": "number", "unit": "cm", "description": "潮高"}
+      },
+      "note": "天文潮，不含增水；与鸦岗实测相比相位约差 1–2h、潮差偏大约 30%，不可直接当鸦岗潮位使用"
+    },
+    "zjhy": {
+      "files": ["data/zjhy/YYYY-MM.csv"],
+      "nature": "observed",
+      "source": "交通运输部珠江航务管理局「珠江水情信息」",
+      "update": "每日一期（8:00；周末/节假日可能无更新），可网页回溯",
+      "datum": "站点各自水位基准（m）",
+      "time_field": "report_date",
+      "key_fields": ["report_date", "station", "time"],
+      "columns": {
+        "report_date": {"type": "date", "description": "期次日期"},
+        "station": {"type": "string", "description": "站名（上游：梧州（四）/石角/高要/柳州/迁江/贵港/武宣；下游：大虎（二）/天河（二）/冯马庙（二）等）"},
+        "time": {"type": "string", "description": "观测时间（如 11-12 08:00）"},
+        "level_m": {"type": "number", "unit": "m", "description": "实测水位"},
+        "flow_m3s": {"type": "number", "unit": "m3s", "description": "实测流量（部分站为 '-'）"}
+      }
+    },
+    "weather": {
+      "files": ["data/weather/YYYY-MM.csv"],
+      "nature": "forecast_plus_reanalysis",
+      "source": "Open-Meteo forecast API（鸦岗坐标 23.2216N, 113.1827E）",
+      "update": "每天抓取 2 天回顾 + 7 天预报，逐时",
+      "time_field": "valid_time",
+      "key_fields": ["valid_time", "run_time"],
+      "columns": {
+        "run_time": {"type": "string", "description": "预报版本"},
+        "valid_time": {"type": "datetime", "description": "有效时刻"},
+        "lead_h": {"type": "integer", "description": "相对起报整点的小时差（负值=回顾）"},
+        "temp_c": {"type": "number", "unit": "celsius", "description": "2m 气温"},
+        "pressure_hpa": {"type": "number", "unit": "hpa", "description": "海平面气压"},
+        "wind_speed_kmh": {"type": "number", "unit": "kmh", "description": "10m 风速"},
+        "wind_dir_deg": {"type": "number", "unit": "degree", "description": "10m 风向"},
+        "humidity_pct": {"type": "number", "unit": "percent", "description": "相对湿度"},
+        "shortwave_wm2": {"type": "number", "unit": "watt_m2", "description": "短波辐射"},
+        "precip_mm": {"type": "number", "unit": "mm", "description": "小时降水"}
+      }
+    },
+    "glofas": {
+      "files": ["data/glofas/YYYY-MM.csv"],
+      "nature": "forecast_reanalysis",
+      "source": "Open-Meteo GloFAS 河流流量 API",
+      "update": "每天抓取 7 天回顾 + 7 天预报，日值",
+      "time_field": "date",
+      "key_fields": ["point_name", "date", "run_time"],
+      "columns": {
+        "point_name": {"type": "string", "description": "梧州（西江上游）量级可靠；鸦岗附近本地网格值偏小，仅参考"},
+        "date": {"type": "date"},
+        "discharge_m3s": {"type": "number", "unit": "m3s", "description": "河流流量"},
+        "lat": {"type": "number"}, "lon": {"type": "number"}
+      },
+      "note": "上游径流优先使用 zjhy 的石角/高要/梧州实测流量；GloFAS 本地网格不能代表珠江主干"
+    },
+    "typhoon": {
+      "files": ["data/typhoon/YYYY-MM.csv", "data/typhoon/raw/YYYY-MM-DD.json"],
+      "nature": "information",
+      "source": "中央气象台台风网",
+      "update": "每天",
+      "time_field": "fetched_at",
+      "key_fields": ["typhoon_id", "status", "fetched_at"],
+      "columns": {
+        "typhoon_id": {"type": "string"},
+        "name_en": {"type": "string"},
+        "name_cn": {"type": "string"},
+        "code": {"type": "string"},
+        "status": {"type": "string"},
+        "fetched_at": {"type": "datetime"}
+      }
+    }
+  },
+  "water_quality_join": {
+    "assumption": "用户另有一份鸦岗断面水质（DO）数据，至少包含 datetime 和 DO(mg/L) 两列；可含水温、pH、浊度、站点等",
+    "join_keys": {
+      "tide": "valid_time（gz_tide/weather）或 date+hour（t148）或 report_date（zjhy，日尺度）",
+      "water_quality": "datetime（建议统一为北京时间整点）"
+    },
+    "recommended_steps": [
+      "1) 统一时区为 Asia/Shanghai，DO 表按整点对齐；",
+      "2) 对 gz_tide 按 (station_code, valid_time) 选 lead_h 最小的预报版本，避免重复；",
+      "3) DO 与 gz_tide 按 valid_time 内连接（merge_asof 容差 ±30min）；日尺度变量（zjhy? 实测8:00、日潮差）可按日期聚合后连接；",
+      "4) 计算潮位特征：日潮差、涨/落潮、1h 变化率、高低潮时刻、潮汐相位、增水、累计降水、流量等；",
+      "5) 做 0–24h 滞后相关/回归，分季节、分干湿季、分台风事件；控制水温、气温、辐射、流量、降雨；",
+      "6) 报告数据覆盖、缺失、预报/实测性质与基准面差异。"
+    ],
+    "cautions": [
+      "预报≠实测：gz_tide/gz_highlow/t148 是预报，zjhy 是实测（每日8:00）；",
+      "同一时刻多个预报版本：必须按 run_time/lead_h 去重（取 lead_h 最小）；",
+      "基准面不同：T148=平均海面下134cm；GZ 为模式基准；跨源先做平移/相位标定；",
+      "GZ 格点不是实体水文站，离鸦岗最近的格点约 14 km 下游；",
+      "GloFAS 鸦岗本地网格值偏小，不能代表珠江主干；上游径流用 zjhy 石角/高要/梧州；",
+      "T148 仅 2025–2027 可回溯；GZ 无历史，只能从部署起积累。"
+    ]
+  }
+}
