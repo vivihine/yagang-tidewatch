@@ -1,0 +1,23 @@
+{
+  "snapshot": {
+    "zip": "tidewatch_latest.zip",
+    "date": "2026-11-15",
+    "size_bytes": 32531,
+    "sha256": "1ae98370affe585adbe4134e973ce2af6025b4b7ababca90e299625cba8f23d7",
+    "file_count": 12,
+    "total_rows": 1091,
+    "datasets": [
+      "glofas",
+      "gz_highlow",
+      "gz_tide",
+      "t148",
+      "typhoon",
+      "weather",
+      "zjhy"
+    ],
+    "months": [
+      "2026-11"
+    ],
+    "updated_at": "2026-11-15 21:56:39"
+  }
+}
