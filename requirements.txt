@@ -1,0 +1,2 @@
+# 本项目只使用 Python 标准库（urllib / tomllib / csv / json / re / subprocess），无需 pip 安装。
+# 运行环境：Python >= 3.11（推荐 3.12，GitHub Actions 默认可用）
