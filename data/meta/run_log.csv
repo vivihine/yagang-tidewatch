@@ -1,0 +1,13 @@
+﻿run_at,task,source,status,rows,duration_s,message
+2026-11-15 21:45:33,daily,gz_tide,ok,360,2.2,
+2026-11-15 21:45:34,daily,gz_highlow,ok,48,0.3,
+2026-11-15 21:45:39,daily,t148,ok,362,5.4,
+2026-11-15 21:45:42,daily,zjhy,ok,30,2.9,
+2026-11-15 21:45:44,daily,weather,ok,216,2.0,
+2026-11-15 21:45:48,daily,glofas,ok,28,3.8,
+2026-11-15 21:45:48,daily,typhoon,ok,35,0.3,
+2026-11-15 21:55:14,snapshot,snapshot,ok,12,,snapshot tidewatch_latest.zip (30.7 KB)
+2026-11-15 21:56:24,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
+2026-11-15 21:56:24,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
+2026-11-15 21:56:39,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
+2026-11-15 21:56:39,snapshot,snapshot,ok,12,,snapshot tidewatch_latest.zip (31.8 KB)
