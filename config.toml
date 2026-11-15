@@ -1,0 +1,139 @@
+# ============================================================
+# 鸦岗断面潮位/水位数据采集（yagang-tidewatch）· 配置文件
+# 修改配置不需要改代码。所有时间均为北京时间（Asia/Shanghai）。
+# 本仓库与 yagang-rainwatch（降雨预报）是两个独立仓库，数据也各自独立存放。
+# ============================================================
+
+[general]
+timezone = "Asia/Shanghai"
+data_dir = "data"
+docs_dir = "docs"
+# 部署 GitHub Pages 后填写（用于看板页脚链接）
+dashboard_url = "https://vivihine.github.io/yagang-tidewatch/"
+repo_url = "https://github.com/vivihine/yagang-tidewatch"
+page_title = "鸦岗断面潮位/水位数据采集"
+page_subtitle = "（广州市环科院 · 每日常规采集）"
+
+# ------------------------------------------------------------
+# g.hyyb 数值预报格点：天文潮 / 总水位 / 增水（逐时，滚动 72h）
+# 说明：鸦岗断面本身没有该格点，取下游最近邻点 + 前/后航道代表点。
+# sserial = 站点序号 - 1（站点表见 README）
+# ------------------------------------------------------------
+[sources.gz_tide]
+enabled = true
+[[sources.gz_tide.stations]]
+name = "广州38"
+code = "GZ079"
+sserial = 78
+zj = 10
+warning = 180
+[[sources.gz_tide.stations]]
+name = "广州39"
+code = "GZ080"
+sserial = 79
+zj = 10
+warning = 180
+[[sources.gz_tide.stations]]
+name = "广州41"
+code = "GZ083"
+sserial = 82
+zj = 10
+warning = 180
+[[sources.gz_tide.stations]]
+name = "南石头"
+code = "GZ082"
+sserial = 81
+zj = 10
+warning = 180
+[[sources.gz_tide.stations]]
+name = "中大码头"
+code = "GZ074"
+sserial = 73
+zj = 10
+warning = 180
+
+# ------------------------------------------------------------
+# g.hyyb 风暴潮系统：广州 / 黄埔 / 南沙 未来约 16 天高低潮（珠基）
+# ------------------------------------------------------------
+[sources.gz_highlow]
+enabled = true
+[[sources.gz_highlow.stations]]
+name = "广州"
+en = "GUANGZHOU"
+[[sources.gz_highlow.stations]]
+name = "黄埔"
+en = "HUANGPU"
+[[sources.gz_highlow.stations]]
+name = "南沙"
+en = "NANSHA"
+
+# ------------------------------------------------------------
+# 国家海洋信息中心潮汐表 T148「广州」：天文潮（逐时 + 高低潮）
+# 接口支持按日期回溯（实测约 2025-01-01 ～ 2027-12-31）
+# ------------------------------------------------------------
+[sources.t148]
+enabled = true
+port_code = "T148"
+days_back = 2
+days_ahead = 10
+
+# ------------------------------------------------------------
+# 交通运输部珠江航务管理局「珠江水情信息」：每日 8:00 实测水位/流量
+# 上游（梧州/石角/高要等）可作径流指标；下游（大虎/天河/冯马庙）可作潮位边界
+# ------------------------------------------------------------
+[sources.zjhy]
+enabled = true
+lookback_days = 3
+bases = [
+  "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/",
+  "https://www.mot.gov.cn/fuwu/yujingtishi/zhujiangshuiqingxx/",
+]
+
+# ------------------------------------------------------------
+# Open-Meteo 逐时气象（鸦岗断面坐标）：气温/气压/风/湿度/辐射/降水
+# ------------------------------------------------------------
+[sources.weather]
+enabled = true
+latitude = 23.2216
+longitude = 113.1827
+forecast_days = 7
+past_days = 2
+
+# ------------------------------------------------------------
+# Open-Meteo GloFAS 河流流量（日值）
+# 注意：GloFAS 粗网格只对大河（梧州/西江）量级正确，本地网格值偏小；
+#       上游径流优先用 zjhy 的石角/高要/梧州流量。
+# ------------------------------------------------------------
+[sources.glofas]
+enabled = true
+forecast_days = 7
+past_days = 7
+[[sources.glofas.points]]
+name = "梧州（西江上游）"
+lat = 23.48
+lon = 111.28
+[[sources.glofas.points]]
+name = "鸦岗附近（本地网格，仅参考）"
+lat = 23.2
+lon = 113.18
+
+# ------------------------------------------------------------
+# 中央气象台台风网：台风列表（原始 JSON 快照 + 解析 CSV）
+# ------------------------------------------------------------
+[sources.typhoon]
+enabled = true
+
+# ------------------------------------------------------------
+# 归档与压缩
+#  - 每月 1 日（或当天首次运行）把 keep_raw_months 之前的月份打进
+#    archive/tidewatch_YYYY.zip，并删除 data/ 中的原始月文件以节省仓库空间；
+#  - 同时刷新 archive/tidewatch_latest.zip（包含全部数据 + 指标说明 + LLM 指南 + schema），
+#    适合直接下载丢给大模型；
+# ------------------------------------------------------------
+[archive]
+enabled = true
+dir = "archive"
+keep_raw_months = 2          # data/ 中保留最近几个月（含当前月）；更早的归档压缩
+snapshot_enabled = true      # 是否刷新 tidewatch_latest.zip
+snapshot_on_day = 1          # 每月 1 日刷新一次 latest 快照（也可手动 --task snapshot）
+documents = ["指标说明.md", "LLM分析指南.md", "schema.json"]
