@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-15",
+  "run_at": "2026-11-15 21:45:48",
+  "task": "daily",
+  "status": "ok",
+  "results": {
+    "gz_tide": {
+      "status": "ok",
+      "rows": 360,
+      "message": ""
+    },
+    "gz_highlow": {
+      "status": "ok",
+      "rows": 48,
+      "message": ""
+    },
+    "t148": {
+      "status": "ok",
+      "rows": 362,
+      "message": ""
+    },
+    "zjhy": {
+      "status": "ok",
+      "rows": 30,
+      "message": ""
+    },
+    "weather": {
+      "status": "ok",
+      "rows": 216,
+      "message": ""
+    },
+    "glofas": {
+      "status": "ok",
+      "rows": 28,
+      "message": ""
+    },
+    "typhoon": {
+      "status": "ok",
+      "rows": 35,
+      "message": ""
+    }
+  }
+}
