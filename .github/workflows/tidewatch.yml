@@ -1,0 +1,107 @@
+name: tidewatch
+
+on:
+  schedule:
+    # 主触发：北京时间 14:45（UTC 06:45，g.hyyb 每日 14:00 起报之后）
+    - cron: "45 6 * * *"
+    # 备份触发：北京时间 18:45（UTC 10:45）；若当天已成功会自动跳过
+    - cron: "45 10 * * *"
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "daily（日常抓取）/ archive（归档旧月份）/ snapshot（刷新 latest 快照）/ backfill_*（补历史）"
+        type: choice
+        options: ["daily", "archive", "snapshot", "backfill_t148", "backfill_zjhy"]
+        default: "daily"
+      start:
+        description: "补抓开始日期 YYYY-MM-DD（backfill 时必填）"
+        required: false
+        default: ""
+      end:
+        description: "补抓结束日期 YYYY-MM-DD（backfill 时必填）"
+        required: false
+        default: ""
+      force:
+        description: "daily：忽略“今天已成功”检查，强制重跑"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tidewatch
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run tidewatch
+        env:
+          PYTHONPATH: src
+        run: |
+          set +e
+          TASK="${{ github.event_name == 'workflow_dispatch' && inputs.task || 'daily' }}"
+          FORCE_FLAG=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            FORCE_FLAG="--force"
+          fi
+          run_once() {
+            if [ "$TASK" = "daily" ]; then
+              python -m tidewatch $FORCE_FLAG
+            elif [ "$TASK" = "archive" ]; then
+              python -m tidewatch --task archive
+            elif [ "$TASK" = "snapshot" ]; then
+              python -m tidewatch --task snapshot
+            else
+              python -m tidewatch --task "$TASK" --start "${{ inputs.start }}" --end "${{ inputs.end }}"
+            fi
+          }
+          run_once
+          code=$?
+          if [ "$code" -ne 0 ]; then
+            echo "::warning::首次运行失败（退出码 $code），60 秒后自动重试一次"
+            sleep 60
+            if [ "$TASK" = "daily" ]; then FORCE_FLAG="--force"; fi
+            run_once
+          fi
+
+      - name: Record failure
+        if: failure()
+        env:
+          PYTHONPATH: src
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+          GITHUB_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python -m tidewatch --record-failure || true
+          git config user.name "tidewatch-bot"
+          git config user.email "tidewatch-bot@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data)" ]; then
+            git add data
+            git commit -m "health: failure $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push || true
+          fi
+
+      - name: Commit data, archive and dashboard
+        run: |
+          git config user.name "tidewatch-bot"
+          git config user.email "tidewatch-bot@users.noreply.github.com"
+          git add -A data docs
+          if [ -d archive ]; then git add -A archive; fi
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
