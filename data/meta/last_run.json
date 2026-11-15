@@ -1,6 +1,6 @@
 {
   "date": "2026-11-15",
-  "run_at": "2026-11-15 21:45:48",
+  "run_at": "2026-11-15 22:12:46",
   "task": "daily",
   "status": "ok",
   "results": {
@@ -16,12 +16,12 @@
     },
     "t148": {
       "status": "ok",
-      "rows": 362,
+      "rows": 0,
       "message": ""
     },
     "zjhy": {
       "status": "ok",
-      "rows": 30,
+      "rows": 0,
       "message": ""
     },
     "weather": {
@@ -38,6 +38,11 @@
       "status": "ok",
       "rows": 35,
       "message": ""
+    },
+    "archive": {
+      "status": "ok",
+      "rows": 0,
+      "message": "archived 0 files, deleted 0 raw files"
     }
   }
 }
