@@ -42,6 +42,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 队列中等待的运行可能 checkout 到较旧的 main；先同步到最新，避免 push 被拒。
+      - name: Sync latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -103,5 +109,8 @@ jobs:
           if [ -d archive ]; then git add -A archive; fi
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            if ! git push; then
+              git pull --rebase origin main
+              git push
+            fi
           fi
