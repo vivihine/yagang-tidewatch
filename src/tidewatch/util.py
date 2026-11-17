@@ -121,6 +121,12 @@ def read_json(path: Path, default=None):
         return default
 
 
+def is_after_cutoff(run_at: str, cutoff: str) -> bool:
+    """run_at='YYYY-MM-DD HH:MM:SS' 的 HH:MM 是否 >= cutoff（'HH:MM'）。"""
+    t = str(run_at)[11:16] if len(str(run_at)) >= 16 else ""
+    return bool(t) and t >= cutoff
+
+
 def write_json(path: Path, obj) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
