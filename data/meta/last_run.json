@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "run_at": "2026-11-17 00:27:19",
+  "run_at": "2026-11-17 20:56:13",
   "task": "daily",
   "status": "ok",
   "results": {
@@ -16,18 +16,18 @@
     },
     "t148": {
       "status": "ok",
-      "rows": 28,
+      "rows": 0,
       "message": ""
     },
     "zjhy": {
       "status": "ok",
-      "rows": 0,
+      "rows": 15,
       "message": ""
     },
     "weather": {
-      "status": "ok",
-      "rows": 216,
-      "message": ""
+      "status": "error",
+      "rows": 0,
+      "message": "GET failed https://api.open-meteo.com/v1/forecast?latitude=23.2216&longitude=113.1827&hourly=temperature_2m,pressure_msl"
     },
     "glofas": {
       "status": "ok",
