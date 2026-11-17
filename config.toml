@@ -8,6 +8,9 @@
 timezone = "Asia/Shanghai"
 data_dir = "data"
 docs_dir = "docs"
+# “今天已完成”的判定时刻：只有当天在该时刻之后成功抓取过，才跳过后续运行。
+# 防止 GitHub 自带 schedule 延迟到凌晨的运行把“今天”误标为已完成（14:45 主任务被跳过）。
+daily_ready_after = "14:30"
 # 部署 GitHub Pages 后填写（用于看板页脚链接）
 dashboard_url = "https://vivihine.github.io/yagang-tidewatch/"
 repo_url = "https://github.com/vivihine/yagang-tidewatch"
