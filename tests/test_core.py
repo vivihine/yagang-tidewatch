@@ -17,7 +17,7 @@ from tidewatch.sources.gz_tide import parse_rows as parse_gz  # noqa: E402
 from tidewatch.sources.typhoon import parse_typhoon_listp  # noqa: E402
 from tidewatch.sources.zjhy import parse_article  # noqa: E402
 from tidewatch.store import append_monthly  # noqa: E402
-from tidewatch.util import strip_tags, table_rows  # noqa: E402
+from tidewatch.util import is_after_cutoff, strip_tags, table_rows  # noqa: E402
 
 
 class TestUtil(unittest.TestCase):
@@ -91,6 +91,16 @@ class TestParsers(unittest.TestCase):
         text = 'typhoon_jsons_list_default(({"typhoonList":[[1,"A","甲","2601","2601",null,"x","stop"]]}))'
         data = parse_typhoon_listp(text)
         self.assertEqual(data["typhoonList"][0][2], "甲")
+
+
+class TestSkipLogic(unittest.TestCase):
+    def test_is_after_cutoff(self):
+        # 凌晨的延迟运行不算“今天已完成”
+        self.assertFalse(is_after_cutoff("2026-11-17 00:27:19", "14:30"))
+        self.assertFalse(is_after_cutoff("2026-11-17 14:29:59", "14:30"))
+        self.assertTrue(is_after_cutoff("2026-11-17 14:30:00", "14:30"))
+        self.assertTrue(is_after_cutoff("2026-11-17 18:45:00", "14:30"))
+        self.assertFalse(is_after_cutoff("", "14:30"))
 
 
 class TestArchive(unittest.TestCase):
