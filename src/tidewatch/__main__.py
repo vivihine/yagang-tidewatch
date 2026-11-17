@@ -21,7 +21,7 @@ from .config import load_config, source_cfg
 from .render import render
 from .sources import glofas, gz_highlow, gz_tide, t148, typhoon, weather, zjhy
 from .store import append_log
-from .util import now_cn, read_json, write_json
+from .util import is_after_cutoff, now_cn, read_json, write_json
 
 ROOT = Path(__file__).resolve().parents[2]
 LOG_HEADERS = ["run_at", "task", "source", "status", "rows", "duration_s", "message"]
@@ -41,9 +41,21 @@ def log(msg: str) -> None:
     print(f"[{now_cn().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def _today_done() -> bool:
+def _skip_reason(cfg: dict) -> str | None:
+    """当天已“有效”抓取过则返回原因；凌晨的延迟运行不算（必须 >= daily_ready_after）。"""
     last = read_json(ROOT / "data" / "meta" / "last_run.json", {}) or {}
-    return last.get("date") == now_cn().date().isoformat() and last.get("status") == "ok"
+    if last.get("date") != now_cn().date().isoformat() or last.get("status") != "ok":
+        return None
+    cutoff = str(cfg.get("general", {}).get("daily_ready_after", "14:30"))
+    run_at = str(last.get("run_at", ""))
+    if is_after_cutoff(run_at, cutoff):
+        return f"今天 {run_at} 已成功抓取（>= {cutoff}）"
+    return None
+
+
+def _last_run_brief() -> str:
+    last = read_json(ROOT / "data" / "meta" / "last_run.json", {}) or {}
+    return f"{last.get('run_at', '?')}"
 
 
 def _write_log(row: dict) -> None:
@@ -82,10 +94,15 @@ def _archive_steps(cfg: dict, log, results: dict | None = None,
 
 
 def daily(cfg: dict, force: bool = False, no_dashboard: bool = False) -> int:
-    if _today_done() and not force:
-        log("今天已有一次成功运行（如需重跑请加 --force）；跳过抓取。")
+    reason = _skip_reason(cfg)
+    if reason and not force:
+        log(f"{reason}；跳过抓取。")
         _archive_steps(cfg, log)
         return 0
+    if _last_run_brief() and not force:
+        last = (read_json(ROOT / "data" / "meta" / "last_run.json", {}) or {})
+        if last.get("date") == now_cn().date().isoformat():
+            log(f"上次运行 {last.get('run_at')} 早于每日 {cfg.get('general', {}).get('daily_ready_after', '14:30')} 起报时刻，继续抓取。")
     results: dict[str, dict] = {}
     for name, mod in TASKS.items():
         sc = source_cfg(cfg, name)
