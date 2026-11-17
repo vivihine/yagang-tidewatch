@@ -147,12 +147,18 @@ a{{color:#0b5a8a}}
 <main>""")
 
     # 运行状态
-    parts.append("<section><h2>本次运行状态</h2><table><tr><th>数据源</th><th>状态</th><th>新增行数</th></tr>")
+    parts.append("<section><h2>本次运行状态</h2><table><tr><th>数据源</th><th>状态</th><th>结果 / 文件数</th></tr>")
     for name, res in summary.items():
         cls = "ok" if res.get("status") == "ok" else ("warn" if res.get("status") == "partial" else "err")
+        rows = res.get("rows", "")
+        msg = str(res.get("message", "") or "")
+        if name in ("archive", "snapshot"):
+            cell = f"{esc(rows)} 文件" + (f"<div class='small'>{esc(msg)}</div>" if msg else "")
+        else:
+            cell = esc(rows)
         parts.append(f"<tr><td>{esc(name)}</td><td><span class='tag {cls}'>{esc(res.get('status'))}</span></td>"
-                     f"<td>{esc(res.get('rows'))}</td></tr>")
-    parts.append("</table><div class='small'>失败信息见仓库 data/meta/run_log.csv 与 Actions 日志。</div></section>")
+                     f"<td>{cell}</td></tr>")
+    parts.append("</table><div class='small'>archive 的“文件数”表示本次归档/快照处理的文件数；当月暂无更早月份可归档时为 0，属正常。失败信息见仓库 data/meta/run_log.csv 与 Actions 日志。</div></section>")
 
     # GZ 最新
     parts.append("<section><h2>g.hyyb 数值预报格点（最新时刻，cm）</h2>")
