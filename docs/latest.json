@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-20 03:10:16",
+  "run_at": "2026-11-20 14:46:15",
   "status": {
     "gz_tide": "ok",
     "gz_highlow": "ok",
@@ -15,75 +15,75 @@
       "source": "g_hyyb_gz_grid",
       "station_code": "GZ074",
       "station_name": "中大码头",
-      "run_time": "2026-11-17 20:49",
-      "lead_h": "61",
-      "valid_time": "2026-11-20 03:00:00",
-      "astro_cm": "-62",
-      "total_cm": "-57",
-      "surge_cm": "5",
-      "dist_to_warning_cm": "-237",
+      "run_time": "2026-11-18 03:22",
+      "lead_h": "60",
+      "valid_time": "2026-11-20 14:00:00",
+      "astro_cm": "-37",
+      "total_cm": "-30",
+      "surge_cm": "7",
+      "dist_to_warning_cm": "-210",
       "dist_to_dike_cm": "无",
-      "fetched_at": "2026-11-17 20:49:02",
+      "fetched_at": "2026-11-18 03:22:30",
       "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/OperationalForecast/Tide/station_points_form.php?dykedem=335&sserial=73&station=GZ074&stationc=%E4%B8%AD%E5%A4%A7%E7%A0%81%E5%A4%B4&zj=10&warning=180&tide_file=gz"
     },
     {
       "source": "g_hyyb_gz_grid",
       "station_code": "GZ082",
       "station_name": "南石头",
-      "run_time": "2026-11-17 20:49",
-      "lead_h": "61",
-      "valid_time": "2026-11-20 03:00:00",
-      "astro_cm": "-59",
-      "total_cm": "-53",
+      "run_time": "2026-11-18 03:22",
+      "lead_h": "60",
+      "valid_time": "2026-11-20 14:00:00",
+      "astro_cm": "-30",
+      "total_cm": "-24",
       "surge_cm": "6",
-      "dist_to_warning_cm": "-233",
+      "dist_to_warning_cm": "-204",
       "dist_to_dike_cm": "无",
-      "fetched_at": "2026-11-17 20:49:02",
+      "fetched_at": "2026-11-18 03:22:30",
       "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/OperationalForecast/Tide/station_points_form.php?dykedem=335&sserial=81&station=GZ082&stationc=%E5%8D%97%E7%9F%B3%E5%A4%B4&zj=10&warning=180&tide_file=gz"
     },
     {
       "source": "g_hyyb_gz_grid",
       "station_code": "GZ079",
       "station_name": "广州38",
-      "run_time": "2026-11-17 20:49",
-      "lead_h": "61",
-      "valid_time": "2026-11-20 03:00:00",
-      "astro_cm": "-61",
-      "total_cm": "-55",
+      "run_time": "2026-11-18 03:22",
+      "lead_h": "60",
+      "valid_time": "2026-11-20 14:00:00",
+      "astro_cm": "-33",
+      "total_cm": "-27",
       "surge_cm": "6",
-      "dist_to_warning_cm": "-235",
+      "dist_to_warning_cm": "-207",
       "dist_to_dike_cm": "无",
-      "fetched_at": "2026-11-17 20:49:02",
+      "fetched_at": "2026-11-18 03:22:30",
       "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/OperationalForecast/Tide/station_points_form.php?dykedem=335&sserial=78&station=GZ079&stationc=%E5%B9%BF%E5%B7%9E38&zj=10&warning=180&tide_file=gz"
     },
     {
       "source": "g_hyyb_gz_grid",
       "station_code": "GZ080",
       "station_name": "广州39",
-      "run_time": "2026-11-17 20:49",
-      "lead_h": "61",
-      "valid_time": "2026-11-20 03:00:00",
-      "astro_cm": "-59",
-      "total_cm": "-53",
+      "run_time": "2026-11-18 03:22",
+      "lead_h": "60",
+      "valid_time": "2026-11-20 14:00:00",
+      "astro_cm": "-29",
+      "total_cm": "-23",
       "surge_cm": "6",
-      "dist_to_warning_cm": "-233",
+      "dist_to_warning_cm": "-203",
       "dist_to_dike_cm": "无",
-      "fetched_at": "2026-11-17 20:49:02",
+      "fetched_at": "2026-11-18 03:22:30",
       "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/OperationalForecast/Tide/station_points_form.php?dykedem=335&sserial=79&station=GZ080&stationc=%E5%B9%BF%E5%B7%9E39&zj=10&warning=180&tide_file=gz"
     },
     {
       "source": "g_hyyb_gz_grid",
       "station_code": "GZ083",
       "station_name": "广州41",
-      "run_time": "2026-11-17 20:49",
-      "lead_h": "61",
-      "valid_time": "2026-11-20 03:00:00",
-      "astro_cm": "-59",
-      "total_cm": "-53",
+      "run_time": "2026-11-18 03:22",
+      "lead_h": "60",
+      "valid_time": "2026-11-20 14:00:00",
+      "astro_cm": "-30",
+      "total_cm": "-24",
       "surge_cm": "6",
-      "dist_to_warning_cm": "-233",
+      "dist_to_warning_cm": "-204",
       "dist_to_dike_cm": "无",
-      "fetched_at": "2026-11-17 20:49:02",
+      "fetched_at": "2026-11-18 03:22:30",
       "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/OperationalForecast/Tide/station_points_form.php?dykedem=335&sserial=82&station=GZ083&stationc=%E5%B9%BF%E5%B7%9E41&zj=10&warning=180&tide_file=gz"
     }
   ],
@@ -92,7 +92,7 @@
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "南沙",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-20",
         "high1_time": "13:11",
         "high1_cm": "42",
@@ -102,13 +102,13 @@
         "low1_cm": "-91",
         "low2_time": "18:42",
         "low2_cm": "-40",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E5%8D%97%E6%B2%99&stationE=NANSHA&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       },
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "南沙",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-21",
         "high1_time": "13:48",
         "high1_cm": "35",
@@ -118,13 +118,13 @@
         "low1_cm": "-90",
         "low2_time": "19:08",
         "low2_cm": "-31",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E5%8D%97%E6%B2%99&stationE=NANSHA&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       },
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "南沙",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-22",
         "high1_time": "00:10",
         "high1_cm": "114",
@@ -134,7 +134,7 @@
         "low1_cm": "-92",
         "low2_time": "19:40",
         "low2_cm": "-25",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E5%8D%97%E6%B2%99&stationE=NANSHA&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       }
     ],
@@ -142,7 +142,7 @@
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "广州",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-20",
         "high1_time": "12:55",
         "high1_cm": "213",
@@ -152,13 +152,13 @@
         "low1_cm": "74",
         "low2_time": "17:49",
         "low2_cm": "141",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E5%B9%BF%E5%B7%9E&stationE=GUANGZHOU&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       },
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "广州",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-21",
         "high1_time": "13:31",
         "high1_cm": "206",
@@ -168,13 +168,13 @@
         "low1_cm": "75",
         "low2_time": "18:12",
         "low2_cm": "149",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E5%B9%BF%E5%B7%9E&stationE=GUANGZHOU&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       },
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "广州",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-22",
         "high1_time": "14:06",
         "high1_cm": "200",
@@ -184,7 +184,7 @@
         "low1_cm": "76",
         "low2_time": "18:41",
         "low2_cm": "157",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E5%B9%BF%E5%B7%9E&stationE=GUANGZHOU&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       }
     ],
@@ -192,7 +192,7 @@
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "黄埔",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-20",
         "high1_time": "00:42",
         "high1_cm": "140",
@@ -202,13 +202,13 @@
         "low1_cm": "-118",
         "low2_time": "19:42",
         "low2_cm": "-78",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E9%BB%84%E5%9F%94&stationE=HUANGPU&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       },
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "黄埔",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-21",
         "high1_time": "01:09",
         "high1_cm": "140",
@@ -218,13 +218,13 @@
         "low1_cm": "-121",
         "low2_time": "20:13",
         "low2_cm": "-69",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E9%BB%84%E5%9F%94&stationE=HUANGPU&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       },
       {
         "source": "g_hyyb_gz_highlow",
         "station_name": "黄埔",
-        "run_time": "2026-11-20 03:09",
+        "run_time": "2026-11-20 14:45",
         "date": "2026-11-22",
         "high1_time": "01:38",
         "high1_cm": "137",
@@ -234,7 +234,7 @@
         "low1_cm": "-124",
         "low2_time": "20:46",
         "low2_cm": "-56",
-        "fetched_at": "2026-11-20 03:09:27",
+        "fetched_at": "2026-11-20 14:45:31",
         "url": "http://g.hyyb.org/systems/HyybTyhoonStormsurge/Tide/Zongtai/TideZongtaiStation2.php?stationC=%E9%BB%84%E5%9F%94&stationE=HUANGPU&WarningLevel=/&DatumLevel=%E7%8F%A0%E5%9F%BA&Zhujiang=0"
       }
     ]
@@ -289,75 +289,75 @@
     }
   },
   "zjhy": {
-    "report_date": "2026-11-19",
+    "report_date": "2026-11-20",
     "rows": [
       {
         "source": "zjhy_daily",
-        "report_date": "2026-11-19",
+        "report_date": "2026-11-20",
         "station": "冯马庙（二）",
-        "time": "11-19 08:00",
+        "time": "11-20 08:00",
+        "level_m": "1.00",
+        "flow_m3s": "-",
+        "fetched_at": "2026-11-20 14:46:12",
+        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261120_4228101.html"
+      },
+      {
+        "source": "zjhy_daily",
+        "report_date": "2026-11-20",
+        "station": "大虎（二）",
+        "time": "11-20 08:00",
         "level_m": "0.95",
         "flow_m3s": "-",
-        "fetched_at": "2026-11-19 14:46:02",
-        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261119_4228038.html"
+        "fetched_at": "2026-11-20 14:46:12",
+        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261120_4228101.html"
       },
       {
         "source": "zjhy_daily",
-        "report_date": "2026-11-19",
-        "station": "大虎（二）",
-        "time": "11-19 08:00",
-        "level_m": "0.90",
-        "flow_m3s": "-",
-        "fetched_at": "2026-11-19 14:46:02",
-        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261119_4228038.html"
-      },
-      {
-        "source": "zjhy_daily",
-        "report_date": "2026-11-19",
+        "report_date": "2026-11-20",
         "station": "天河（二）",
-        "time": "11-19 08:00",
-        "level_m": "1.04",
-        "flow_m3s": "462",
-        "fetched_at": "2026-11-19 14:46:02",
-        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261119_4228038.html"
+        "time": "11-20 08:00",
+        "level_m": "1.02",
+        "flow_m3s": "2310",
+        "fetched_at": "2026-11-20 14:46:12",
+        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261120_4228101.html"
       },
       {
         "source": "zjhy_daily",
-        "report_date": "2026-11-19",
+        "report_date": "2026-11-20",
         "station": "梧州（四）",
-        "time": "11-19 08:00",
-        "level_m": "2.12",
-        "flow_m3s": "1680",
-        "fetched_at": "2026-11-19 14:46:02",
-        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261119_4228038.html"
+        "time": "11-20 08:00",
+        "level_m": "2.08",
+        "flow_m3s": "1650",
+        "fetched_at": "2026-11-20 14:46:12",
+        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261120_4228101.html"
       },
       {
         "source": "zjhy_daily",
-        "report_date": "2026-11-19",
+        "report_date": "2026-11-20",
         "station": "石角",
-        "time": "11-19 08:00",
-        "level_m": "0.23",
-        "flow_m3s": "334",
-        "fetched_at": "2026-11-19 14:46:02",
-        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261119_4228038.html"
+        "time": "11-20 08:00",
+        "level_m": "-0.05",
+        "flow_m3s": "549",
+        "fetched_at": "2026-11-20 14:46:12",
+        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261120_4228101.html"
       },
       {
         "source": "zjhy_daily",
-        "report_date": "2026-11-19",
+        "report_date": "2026-11-20",
         "station": "高要",
-        "time": "11-19 08:00",
-        "level_m": "0.34",
-        "flow_m3s": "105",
-        "fetched_at": "2026-11-19 14:46:02",
-        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261119_4228038.html"
+        "time": "11-20 08:00",
+        "level_m": "0.22",
+        "flow_m3s": "3360",
+        "fetched_at": "2026-11-20 14:46:12",
+        "url": "https://zjhy.mot.gov.cn/zhuhangsj/shuiqingxx/202611/t20261120_4228101.html"
       }
     ]
   },
   "weather": {
-    "run_time": "2026-11-20 03:00",
+    "run_time": "2026-11-20 14:00",
     "n": 25,
-    "temp_min": 11.5,
-    "temp_max": 15.3,
-    "precip_sum": 6.9
+    "temp_min": 10.6,
+    "temp_max": 20.9,
+    "precip_sum": 0.1
   }
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "run_at": "2026-11-20 03:10:16",
+  "run_at": "2026-11-20 14:46:15",
   "task": "daily",
   "status": "ok",
   "results": {
@@ -21,7 +21,7 @@
     },
     "zjhy": {
       "status": "ok",
-      "rows": 0,
+      "rows": 15,
       "message": ""
     },
     "weather": {
