@@ -128,3 +128,11 @@
 2026-11-20 14:46:15,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
 2026-11-20 18:45:25,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
 2026-11-20 23:46:32,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
+2026-11-21 02:48:20,daily,gz_tide,ok,360,5.2,
+2026-11-21 02:48:22,daily,gz_highlow,ok,48,2.5,
+2026-11-21 02:48:45,daily,t148,ok,27,22.6,
+2026-11-21 02:48:52,daily,zjhy,ok,0,7.1,
+2026-11-21 02:48:53,daily,weather,ok,216,0.2,
+2026-11-21 02:48:53,daily,glofas,ok,28,0.8,
+2026-11-21 02:48:55,daily,typhoon,ok,35,1.4,
+2026-11-21 02:48:55,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
