@@ -1,6 +1,6 @@
 {
   "date": "2026-11-24",
-  "run_at": "2026-11-24 02:46:04",
+  "run_at": "2026-11-24 06:13:56",
   "task": "daily",
   "status": "ok",
   "results": {
@@ -16,7 +16,7 @@
     },
     "t148": {
       "status": "ok",
-      "rows": 28,
+      "rows": 0,
       "message": ""
     },
     "zjhy": {
