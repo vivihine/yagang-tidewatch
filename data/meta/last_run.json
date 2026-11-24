@@ -1,13 +1,13 @@
 {
   "date": "2026-11-25",
-  "run_at": "2026-11-25 02:21:16",
+  "run_at": "2026-11-25 04:52:52",
   "task": "daily",
-  "status": "ok",
+  "status": "partial",
   "results": {
     "gz_tide": {
-      "status": "ok",
-      "rows": 360,
-      "message": ""
+      "status": "partial",
+      "rows": 288,
+      "message": "GZ082: no data rows parsed"
     },
     "gz_highlow": {
       "status": "ok",
@@ -16,7 +16,7 @@
     },
     "t148": {
       "status": "ok",
-      "rows": 28,
+      "rows": 0,
       "message": ""
     },
     "zjhy": {
