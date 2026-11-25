@@ -1,13 +1,13 @@
 {
   "date": "2026-11-25",
-  "run_at": "2026-11-25 04:52:52",
+  "run_at": "2026-11-25 14:52:45",
   "task": "daily",
-  "status": "partial",
+  "status": "ok",
   "results": {
     "gz_tide": {
-      "status": "partial",
-      "rows": 288,
-      "message": "GZ082: no data rows parsed"
+      "status": "ok",
+      "rows": 360,
+      "message": ""
     },
     "gz_highlow": {
       "status": "ok",
@@ -35,9 +35,9 @@
       "message": ""
     },
     "typhoon": {
-      "status": "ok",
-      "rows": 35,
-      "message": ""
+      "status": "error",
+      "rows": 0,
+      "message": "GET failed http://typhoon.nmc.cn/weatherservice/typhoon/jsons/list_default?callback=callback_typhoon: curl failed rc=28:"
     },
     "archive": {
       "status": "ok",
