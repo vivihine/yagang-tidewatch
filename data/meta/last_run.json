@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-25",
-  "run_at": "2026-11-25 14:52:45",
+  "date": "2026-11-26",
+  "run_at": "2026-11-26 01:39:01",
   "task": "daily",
   "status": "ok",
   "results": {
@@ -16,12 +16,12 @@
     },
     "t148": {
       "status": "ok",
-      "rows": 0,
+      "rows": 28,
       "message": ""
     },
     "zjhy": {
       "status": "ok",
-      "rows": 0,
+      "rows": 15,
       "message": ""
     },
     "weather": {
@@ -35,9 +35,9 @@
       "message": ""
     },
     "typhoon": {
-      "status": "error",
-      "rows": 0,
-      "message": "GET failed http://typhoon.nmc.cn/weatherservice/typhoon/jsons/list_default?callback=callback_typhoon: curl failed rc=28:"
+      "status": "ok",
+      "rows": 35,
+      "message": ""
     },
     "archive": {
       "status": "ok",
