@@ -231,3 +231,4 @@
 2026-11-25 14:52:45,daily,typhoon,error,0,373.9,"GET failed http://typhoon.nmc.cn/weatherservice/typhoon/jsons/list_default?callback=callback_typhoon: curl failed rc=28: curl: (28) Connection timed out after 60002 milliseconds
 "
 2026-11-25 14:52:45,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
+2026-11-25 18:45:27,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
