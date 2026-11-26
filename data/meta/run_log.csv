@@ -265,3 +265,11 @@
 2026-11-27 01:21:29,daily,glofas,ok,28,1.2,
 2026-11-27 01:21:31,daily,typhoon,ok,35,1.4,
 2026-11-27 01:21:31,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
+2026-11-27 03:49:27,daily,gz_tide,ok,360,4.6,
+2026-11-27 03:49:29,daily,gz_highlow,ok,48,2.1,
+2026-11-27 03:49:57,daily,t148,ok,0,27.3,
+2026-11-27 03:50:01,daily,zjhy,ok,0,4.1,
+2026-11-27 03:50:01,daily,weather,ok,216,0.2,
+2026-11-27 03:50:02,daily,glofas,ok,28,1.0,
+2026-11-27 03:50:03,daily,typhoon,ok,35,1.4,
+2026-11-27 03:50:03,archive,archive,ok,0,,"archived 0 files, deleted 0 raw files"
